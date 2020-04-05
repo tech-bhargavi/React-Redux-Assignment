@@ -3,10 +3,17 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import {createStore} from 'redux';
+import reducer from './store/reducer';
+import {Provider} from 'react-redux'
 
+// Make a store to get an access for application level state
+const store=createStore(reducer);
+
+// Make a provider to bind redux to react components
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}><App /></Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
